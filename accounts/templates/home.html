@@ -1,0 +1,111 @@
+
+{%  extends 'main.html' %}
+
+{% block content %}
+    </br>
+    <h3 style="text-align: center">COVID-19 Information in Bangladesh</h3>
+
+<div>
+    <br>
+    {%  include 'status.html' %}
+</div>
+
+
+    <div class="row">
+
+    <div class="col">
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 500px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: 24.244954, lng: 90.024343};
+
+  var uluru2 = {lat: 23.634543, lng: 90.489854};
+  var uluru3 = {lat: 23.921868, lng: 90.717306};
+  var uluru4 = {lat: 23.164859, lng: 90.195135};
+
+  var dhaka = {lat: 23.820178, lng: 90.404748};
+  var manikganj = {lat: 23.857587, lng: 90.011814};
+  var chattogram = {lat: 22.360849, lng: 91.783473};
+  var gaibandha = {lat: 25.343878, lng: 89.557312};
+
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {
+        zoom: 8, center:
+        uluru,
+        mapTypeId: 'terrain'
+      });
+
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru2, map: map});
+  var marker = new google.maps.Marker({position: uluru3, map: map});
+  var marker = new google.maps.Marker({position: uluru4, map: map});
+  var marker = new google.maps.Marker({position: dhaka, map: map});
+  var marker = new google.maps.Marker({position: manikganj, map: map});
+  var marker = new google.maps.Marker({position: chattogram, map: map});
+  var marker = new google.maps.Marker({position: gaibandha, map: map});
+
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmvE-3v4vq0yY8PzpXoDRky00q-2vjYo8&callback=initMap">
+    </script>
+
+</div>
+    </div>
+
+<br><br>
+
+
+
+<div>
+  <h2>Total Coronavirus Cases</h2>
+  <canvas id="myChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript">
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [
+        'mar 8', 'mar 9', 'mar 10', 'mar 11', 'mar 12', 'mar 13', 'mar 14', 'mar 15','mar 16', 'mar 17', 'mar 18', 'mar 19', 'mar 20','mar 21','mar 22','mar 23','mar 24','mar 25','mar 26','mar 27','mar 28','mar 29','mar 30','mar 31',
+        'Apr 01', 'Apr 02', 'Apr 03', 'Apr 04', 'Apr 05','Apr 06','Apr 07','Apr 08','Apr 09','Apr 10'
+        ],
+        datasets: [{
+            label: 'Total Cases',
+            backgroundColor: '#33CCFF',
+            borderColor: '#33CCFF',
+            data: [
+            3, 3, 3, 3, 3, 3, 5, 5, 8, 10, 14, 18, 20,24,27,33,39,39,44,48,48,48,49,51,
+            54,56,61,70,88,123,164,218,330,424
+            ]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+</div>
+{% endblock %}
+

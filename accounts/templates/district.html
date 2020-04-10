@@ -1,0 +1,43 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+    <br>
+<div class="card-header">
+ COVID-19 Confirmed cases in Bangladesh (up to April 8, 2020)
+</div>
+    <div class="row">
+    	<div class="col-md">
+		<div class="card card-body">
+        			<form method="get" style="text-align: end">
+				{{ myFilter.form }}
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+        <br>
+			<table class="table table-sm">
+				<tr>
+					<th>District/City</th>
+					<th>Total cases</th>
+					<th>Total deaths</th>
+					<th>Total recovered</th>
+				</tr>
+
+				{% for corona in coronas %}
+					<tr>
+						<td>{{ corona.district_name }}</td>
+						<td>{{ corona.total_cases }}</td>
+						<td>{{ corona.total_deaths }}</td>
+						<td>{{ corona.total_recovered }}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}
